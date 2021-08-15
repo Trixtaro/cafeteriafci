@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'super_admins' => ['admin@admin.com'],
 
     /*
     |--------------------------------------------------------------------------
@@ -68,7 +69,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Models\User::class,
         ],
 
         // 'users' => [
@@ -113,5 +114,4 @@ return [
     */
 
     'password_timeout' => 10800,
-
 ];
