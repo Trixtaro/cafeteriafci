@@ -18,7 +18,7 @@ class CommentPolicy
      */
     public function viewAny(User $user)
     {
-        return true;
+        return $user->hasPermissionTo('list comments');
     }
 
     /**
@@ -30,7 +30,7 @@ class CommentPolicy
      */
     public function view(User $user, Comment $model)
     {
-        return true;
+        return $user->hasPermissionTo('view comments');
     }
 
     /**
@@ -41,7 +41,7 @@ class CommentPolicy
      */
     public function create(User $user)
     {
-        return true;
+        return $user->hasPermissionTo('create comments');
     }
 
     /**
@@ -53,7 +53,7 @@ class CommentPolicy
      */
     public function update(User $user, Comment $model)
     {
-        return true;
+        return $user->hasPermissionTo('update comments');
     }
 
     /**
@@ -65,7 +65,7 @@ class CommentPolicy
      */
     public function delete(User $user, Comment $model)
     {
-        return true;
+        return $user->hasPermissionTo('delete comments');
     }
 
     /**
@@ -77,7 +77,7 @@ class CommentPolicy
      */
     public function deleteAny(User $user)
     {
-        return true;
+        return $user->hasPermissionTo('delete comments');
     }
 
     /**

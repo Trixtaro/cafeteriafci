@@ -18,8 +18,42 @@
                 </div>
 
                 <x-nav-dropdown title="Apps" align="right" width="48">
+                        @can('view-any', App\Models\User::class)
+                        <x-dropdown-link href="{{ route('users.index') }}">
+                        Users
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Category::class)
+                        <x-dropdown-link href="{{ route('categories.index') }}">
+                        Categories
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Post::class)
+                        <x-dropdown-link href="{{ route('posts.index') }}">
+                        Posts
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Comment::class)
+                        <x-dropdown-link href="{{ route('comments.index') }}">
+                        Comments
+                        </x-dropdown-link>
+                        @endcan
                 </x-nav-dropdown>
 
+                    @if (Auth::user()->can('view-any', Spatie\Permission\Models\Role::class) || 
+                        Auth::user()->can('view-any', Spatie\Permission\Models\Permission::class))
+                    <x-nav-dropdown title="Access Management" align="right" width="48">
+                        
+                        @can('view-any', Spatie\Permission\Models\Role::class)
+                        <x-dropdown-link href="{{ route('roles.index') }}">Roles</x-dropdown-link>
+                        @endcan
+
+                        @can('view-any', Spatie\Permission\Models\Permission::class)
+                        <x-dropdown-link href="{{ route('permissions.index') }}">Permissions</x-dropdown-link>
+                        @endcan
+                        
+                    </x-nav-dropdown>
+                    @endif
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -146,7 +180,39 @@
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
             
+                @can('view-any', App\Models\User::class)
+                <x-jet-responsive-nav-link href="{{ route('users.index') }}">
+                Users
+                </x-jet-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Category::class)
+                <x-jet-responsive-nav-link href="{{ route('categories.index') }}">
+                Categories
+                </x-jet-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Post::class)
+                <x-jet-responsive-nav-link href="{{ route('posts.index') }}">
+                Posts
+                </x-jet-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Comment::class)
+                <x-jet-responsive-nav-link href="{{ route('comments.index') }}">
+                Comments
+                </x-jet-responsive-nav-link>
+                @endcan
 
+                @if (Auth::user()->can('view-any', Spatie\Permission\Models\Role::class) || 
+                    Auth::user()->can('view-any', Spatie\Permission\Models\Permission::class))
+                    
+                    @can('view-any', Spatie\Permission\Models\Role::class)
+                    <x-jet-responsive-nav-link href="{{ route('roles.index') }}">Roles</x-jet-responsive-nav-link>
+                    @endcan
+
+                    @can('view-any', Spatie\Permission\Models\Permission::class)
+                    <x-jet-responsive-nav-link href="{{ route('permissions.index') }}">Permissions</x-jet-responsive-nav-link>
+                    @endcan
+                    
+                @endif
         </div>
 
         <!-- Responsive Settings Options -->

@@ -18,7 +18,7 @@ class PostPolicy
      */
     public function viewAny(User $user)
     {
-        return true;
+        return $user->hasPermissionTo('list posts');
     }
 
     /**
@@ -30,7 +30,7 @@ class PostPolicy
      */
     public function view(User $user, Post $model)
     {
-        return true;
+        return $user->hasPermissionTo('view posts');
     }
 
     /**
@@ -41,7 +41,7 @@ class PostPolicy
      */
     public function create(User $user)
     {
-        return true;
+        return $user->hasPermissionTo('create posts');
     }
 
     /**
@@ -53,7 +53,7 @@ class PostPolicy
      */
     public function update(User $user, Post $model)
     {
-        return true;
+        return $user->hasPermissionTo('update posts');
     }
 
     /**
@@ -65,7 +65,7 @@ class PostPolicy
      */
     public function delete(User $user, Post $model)
     {
-        return true;
+        return $user->hasPermissionTo('delete posts');
     }
 
     /**
@@ -77,7 +77,7 @@ class PostPolicy
      */
     public function deleteAny(User $user)
     {
-        return true;
+        return $user->hasPermissionTo('delete posts');
     }
 
     /**
